@@ -8,7 +8,7 @@
 ##CODE INFORMATION##
 
 #Written by: Sarah Wondmeneh and Yiqiang Zhao#
-#Github Repository: https://github.com/coding2share/phssr-reproducibility/Paper1.R#
+#Github Repository: https://github.com/coding2share/phssr-reproducibility/blob/master/Paper1.R#
 
 ############################################
 

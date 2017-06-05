@@ -7,7 +7,7 @@
 ##CODE INFORMATION##
 
 #Written by: Yiqiang Zhao#
-#Github Link: https://github.com/coding2share/phssr-reproducibility/Paper6.R#
+#Github Link: https://github.com/coding2share/phssr-reproducibility/blob/master/Paper6.R#
 
 ############################################
 

@@ -7,7 +7,7 @@
 ##CODE INFORMATION##
 
 #Written by: Sarah Wondmeneh and Yiqiang Zhao#
-#Github Link: https://github.com/coding2share/phssr-reproducibility/Paper4.R#
+#Github Link: https://github.com/coding2share/phssr-reproducibility/blob/master/Paper4.R#
 
 ############################################
 

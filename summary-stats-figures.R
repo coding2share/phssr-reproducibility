@@ -7,7 +7,7 @@
 ##CODE INFORMATION##
 
 #Written by: Jenine Harris#
-#Github Link: https://github.com/coding2share/phssr-reproducibility/summary-stats-figures.R#
+#Github Link: https://github.com/coding2share/phssr-reproducibility/blob/master/summary-stats-figures.R#
 
 ############################################
 
