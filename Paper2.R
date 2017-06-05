@@ -158,8 +158,10 @@ pred1[prob1>0.5] <- "Yes"
 table(paper2$engagement[as.numeric(names(prob1))], pred1) # 70.5% accuracy
 
 ##FORESTPLOT OF ORIGINAL VS REPRODUCED##
-
-dat2<-read.csv(file.choose())
+#load ReproducibilityORgraphs.csv from GitHub
+#URL https://github.com/coding2share/phssr-reproducibility/blob/master/ReprodicibilityORgraphs.csv
+library(ggplot2)
+dat2<-read.csv(file.choose()) #load ReproducibilityORgraphs.csv from GitHub
 dat2 <-subset(dat2, !(is.na(dat2$paper2OR)))
 dat2$paper2IV <- factor(dat2$paper2IV, levels=c('>$65.02 (ref)',
                                               '$37.89-65.02',
@@ -187,7 +189,7 @@ dat2$paper2IV <- factor(dat2$paper2IV, levels=c('>$65.02 (ref)',
                                               'Governance category: State',
                                               'Population'))
                                               
-library(ggplot2)
+#Appendix B Figure 2
 orspaper2<-ggplot(dat2, aes(x = paper2IV, y = paper2OR,  ymin = paper2LCI, ymax = paper2UCI)) +
   geom_pointrange(aes(col=factor(dat2$paper2REP)), size=.75, position=position_dodge(width=.50)) +
   ylab("Odds ratio & 95% CI") + geom_hline(aes(yintercept = 1)) +

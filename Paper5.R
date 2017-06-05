@@ -185,9 +185,10 @@ table(paper5$budget[as.numeric(names(prob1))], pred1)
 length(pred1)
 length(paper5$budget[as.numeric(names(prob1))])  #28.9% correctly predicted 
 
-##FORESTPLOT OF ORIGINAL VS REPRODUCED##
+#load ReproducibilityORgraphs.csv from GitHub
+#URL https://github.com/coding2share/phssr-reproducibility/blob/master/ReprodicibilityORgraphs.csv
 library(ggplot2)
-dat2<-read.csv(file.choose())
+dat2<-read.csv(file.choose()) #load ReproducibilityORgraphs.csv from GitHub
 
 #subset data to include only observations with odds ratios
 #for paper5 study
@@ -227,6 +228,7 @@ dat2$paper5IV <- factor(dat2$paper5IV, levels=c('Federal',
                                         'Population: <25,000 (ref)'))
 
 #plot original and reproduced OR and 95% CI
+#Appendix B Figure 5b
 orspaper52<-ggplot(dat2, aes(x = paper5IV, y = paper5OR2,  ymin = paper5LCI2, ymax = paper5UCI2)) +
   geom_pointrange(aes(col=factor(dat2$paper5REP2)), size=.75, position=position_dodge(width=.50)) +
   ylab("Odds ratio & 95% CI") + geom_hline(aes(yintercept = 1)) +
@@ -244,6 +246,7 @@ dat2 <-subset(dat2, !(is.na(dat2$paper5OR)))
 dat2$paper5IV<-droplevels(dat2$paper5IV)
 
 #plot original and reproduced OR and 95% CI
+#Appendix B Figure 5a
 orspaper5<-ggplot(dat2, aes(x = paper5IV, y = paper5OR,  ymin = paper5LCI, ymax = paper5UCI)) +
   geom_pointrange(aes(col=factor(dat2$paper5REP)), size=.75, position=position_dodge(width=.50)) +
   ylab("Odds ratio & 95% CI") + geom_hline(aes(yintercept = 1)) +

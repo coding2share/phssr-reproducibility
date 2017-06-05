@@ -268,8 +268,10 @@ ORmultivariate(model2NW)
 ORmultivariate(model3NW)
 
 ##FORESTPLOT OF ORIGINAL VS REPRODUCED##
+#load ReproducibilityORgraphs.csv from GitHub
+#URL https://github.com/coding2share/phssr-reproducibility/blob/master/ReprodicibilityORgraphs.csv
 library(ggplot2)
-dat2<-read.csv(file.choose())
+dat2<-read.csv(file.choose()) #load ReproducibilityORgraphs.csv from GitHub
 dat2$paper3IV <- factor(dat2$paper3IV, levels=c('Partnerships for land use (ref=no)',
                                               'Cross-jurisdictional sharing (ref=no)',
                                               'Use of community guide (ref=no)',
@@ -299,6 +301,7 @@ dat2$paper3IV <- factor(dat2$paper3IV, levels=c('Partnerships for land use (ref=
                                               'Population: <50,000 (ref)'))
 
 #Model 1 original with reproduced
+#Appendix B Figure 3a
 dat3 <-subset(dat2, !(is.na(dat2$paper3OR1)))
 orspaper31<-ggplot(dat3, aes(x = paper3IV, y = paper3OR1,  ymin = paper3LCI1, ymax = paper3UCI1)) +
   geom_pointrange(aes(col=factor(dat3$paper3REP1)),position=position_dodge(width=.50)) +
@@ -312,6 +315,7 @@ orspaper31<-ggplot(dat3, aes(x = paper3IV, y = paper3OR1,  ymin = paper3LCI1, ym
 orspaper31
 
 #Model 2 with original, reproduced, and reproduced without weights
+#Appendix B Figure 3b
 dat4 <-subset(dat2, !(is.na(dat2$paper3OR2)))
 orspaper32<-ggplot(dat4, aes(x = paper3IV, y = paper3OR2,  ymin = paper3LCI2, ymax = paper3UCI2)) +
   geom_pointrange(aes(col=factor(dat4$paper3REP2)), position=position_dodge(width=.50)) +
@@ -324,6 +328,7 @@ orspaper32<-ggplot(dat4, aes(x = paper3IV, y = paper3OR2,  ymin = paper3LCI2, ym
 orspaper32
 
 #Model 3 with original, reproduced, and reproduced without weights
+#Appendix B Figure 3c
 dat5 <-subset(dat2, !(is.na(dat2$paper3OR3)))
 orspaper33a<-ggplot(dat4, aes(x = paper3IV, y = paper3OR3,  ymin = paper3LCI3, ymax = paper3UCI3)) +
   geom_pointrange(aes(col=factor(dat5$paper3REP3)), position=position_dodge(width=.50)) +
@@ -336,6 +341,7 @@ orspaper33a<-ggplot(dat4, aes(x = paper3IV, y = paper3OR3,  ymin = paper3LCI3, y
 orspaper33a
 
 #Model 3 separate for original vs. reproduced and original vs. reproduced without weights
+#Figure 3
 dat5 <-subset(dat2, !(is.na(dat2$paper3OR3)))
 dat6 <-subset(dat5, dat5$paper3REP3!="ReproducedWithoutWeights")
 orspaper33<-ggplot(dat6, aes(x = paper3IV, width=20, y = paper3OR3,  ymin = paper3LCI3, ymax = paper3UCI3)) +
@@ -347,6 +353,8 @@ orspaper33<-ggplot(dat6, aes(x = paper3IV, width=20, y = paper3OR3,  ymin = pape
   theme(legend.position="top", plot.title = element_text(hjust = 0.5))+
   coord_flip()
 orspaper33
+
+#Figure 2
 dat7 <-subset(dat2, dat2$paper3REP3!="Reproduced")
 orspaper33b<-ggplot(dat7, aes(x = paper3IV, width=20, y = paper3OR3,  ymin = paper3LCI3, ymax = paper3UCI3)) +
   geom_pointrange(aes(col=factor(dat7$paper3REP3)),size=.75, position=position_dodge(width=.50)) +

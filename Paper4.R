@@ -183,10 +183,10 @@ pred1[prob1>0.5] <- "Yes"
 
 table(paper4$healthcare[as.numeric(names(prob1))], pred1) #77.0% correctly predicted
 
-##FORESTPLOT OF ORIGINAL VS REPRODUCED##
-
-dat2<-read.csv(file.choose())
-
+#load ReproducibilityORgraphs.csv from GitHub
+#URL https://github.com/coding2share/phssr-reproducibility/blob/master/ReprodicibilityORgraphs.csv
+library(ggplot2)
+dat2<-read.csv(file.choose()) #load ReproducibilityORgraphs.csv from GitHub
 #subset data to include only observations with odds ratios
 #for paper4 study
 dat2 <-subset(dat2, !(is.na(dat2$paper4OR)))
@@ -211,6 +211,7 @@ dat2$paper4IV <- factor(dat2$paper4IV, levels=c('Disparity total score',
                                             '50,000 - 499,999',
                                             'Jurisdiction population (<50,000 ref)'))
 
+#Appendix B Figure 4
 library(ggplot2)
 orspaper4<-ggplot(dat2, aes(x = paper4IV, y = paper4OR,  ymin = paper4LCI, ymax = paper4UCI)) +
   geom_pointrange(aes(col=factor(dat2$paper4REP)), size=.75, position=position_dodge(width=.50)) +

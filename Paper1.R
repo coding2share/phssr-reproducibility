@@ -3,7 +3,8 @@
 ##DATA SOURCES##
 
 #NACCHO data obtained from: http://nacchoprofilestudy.org/data-requests/, "2013 Profile Study"
-#RUCA data obtained from lead author
+#RUCA data obtained from lead author and saved in GitHub:
+#https://github.com/coding2share/phssr-reproducibility/blob/master/paper1-2017ruca.csv 
 
 ##CODE INFORMATION##
 
@@ -227,7 +228,10 @@ pred1[prob1>0.5] <- "Yes"
 table(paper1$PHAB[as.numeric(names(prob1))], pred1)   #86.9% correctly predicted
 
 ##FORESTPLOT OF ORIGINAL VS REPRODUCED##
-dat2<-read.csv(file.choose())
+#load ReproducibilityORgraphs.csv from GitHub
+#URL https://github.com/coding2share/phssr-reproducibility/blob/master/ReprodicibilityORgraphs.csv
+library(ggplot2)
+dat2<-read.csv(file.choose()) #load ReproducibilityORgraphs.csv from GitHub
 dat2 <-subset(dat2, !(is.na(dat2$paper1OR)))
 dat2$paper1IV <- factor(dat2$paper1IV, levels=c('Information systems specialist (ref=no)',
                                                 'Public health physician (ref=no)',
@@ -242,6 +246,7 @@ dat2$paper1IV <- factor(dat2$paper1IV, levels=c('Information systems specialist 
                                                 'Micropolitan',
                                                 'Rural (ref)'))
 
+#Appendix B Figure 1
 #install and open ggplot2 and stringr libraries
 orspaper1<-ggplot(dat2, aes(x = paper1IV, y = paper1OR,  ymin = paper1LCI, ymax = paper1UCI)) +
   geom_pointrange(aes(col=factor(dat2$paper1REP)), size=.75, position=position_dodge(width=.50)) +
