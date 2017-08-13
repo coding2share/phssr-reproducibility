@@ -1,2 +1,2 @@
 # phssr-reproducibility
-statistical code files reproducing 5 phssr manuscripts and summarizing the results of the reproducing
+statistical code files reproducing 6 phssr manuscripts and summarizing the results of the reproducing
